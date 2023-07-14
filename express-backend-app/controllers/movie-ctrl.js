@@ -43,13 +43,8 @@ updateMovie = async (req, res) => {
         })
     }
 
-    Movie.findOne({ _id: req.params.id }, (err, movie) => {
-        if (err) {
-            return res.status(404).json({
-                err,
-                message: 'Movie not found!',
-            })
-        }
+    try {
+        const movie = await Movie.findOne({ _id: req.params.id });
         movie.name = body.name
         movie.time = body.time
         movie.rating = body.rating
@@ -68,7 +63,9 @@ updateMovie = async (req, res) => {
                     message: 'Movie not updated!',
                 })
             })
-    })
+    } catch (err) {
+        return res.status(404).json({ success: false, error: `Movie not found` })
+    }
 }
 
 deleteMovie = async (req, res) => {
