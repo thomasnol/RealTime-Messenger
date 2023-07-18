@@ -1,22 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+//import './App.css'
+import React from 'react'
+
+import { BrowserRouter as Router } from "react-router-dom"
+import { NavBar } from "./components"
+
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <input type="test" placeholder="email"></input>
-        <input type="password" placeholder="password"></input>
-        <button>Sign in</button>
-
-        <br/>
-        <div>
-          <button onClick={() => setCount((count) => count + 1)}>count is: {count}</button>
-          <button onClick={() => setCount((count) => count - 1)}>count is: {count}</button>
-        </div>
-      </div>
+      <Router>
+        <NavBar />
+      </Router>
     </>
   )
 }
