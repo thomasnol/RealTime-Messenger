@@ -7,5 +7,20 @@
     "react-table": "^7.8.0",
     "react-table-6": "^6.11.0",
     "styled-components": "^6.0.4"
-  }
+  },
+  "name": "website-email-project",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
