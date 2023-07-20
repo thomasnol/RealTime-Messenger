@@ -3,25 +3,46 @@ if (process.env.NODE_ENV !== 'production'){
 }
 
 const express = require('express')
+const app = express()
+const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+require('dotenv').config()
+
+// cors middleware
+const corsOptions = {
+    origin: "http://localhost:3000" // frontend URI
+}
+app.use(express.json());
+app.use(cors(corsOptions));
+
+// connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI).then(() => {
+    const PORT = process.env.PORT || 8000
+    app.listen(PORT, () => {
+        console.log(`App is Listening on PORT ${PORT}`);
+    })
+}).catch(err => {
+    console.log(err);
+});
+
 
 const db = require('./db')
-const movieRouter = require('./routes/movie-router')
-
-const app = express()
-const apiPort = 3000
-
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
-app.use(bodyParser.json())
-
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+const movieRouter = require('./routes/movie-router')
+
+//app.use(bodyParser.urlencoded({ extended: true }))
+//app.use(cors())
+//app.use(bodyParser.json())
 
 app.use('/api', movieRouter)
 
-app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
+app.get('/', (req, res) => {
+    //res.send('Hello World!')
+    res.status(201).json({message: "Connected to Backend!"});
+})
+
+//const apiPort = 3000
+//app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
+x
