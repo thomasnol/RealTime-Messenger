@@ -27,8 +27,8 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 });
 
 
-const db = require('./db')
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+// const db = require('./db')
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const movieRouter = require('./routes/movie-router')
 

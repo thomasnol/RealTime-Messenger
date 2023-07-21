@@ -1,3 +1,4 @@
+/*
 const mongoose = require('mongoose')
 
 mongoose
@@ -9,3 +10,4 @@ mongoose
 const db = mongoose.connection
 
 module.exports = db
+*/
