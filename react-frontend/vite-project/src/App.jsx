@@ -20,7 +20,9 @@ function App() {
   }, []);
 
   return (
-    <h1>{message}</h1>
+    <div className="App">
+      <h1>{message}</h1>
+    </div>
   )
 }
 

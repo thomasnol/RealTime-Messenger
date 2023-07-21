@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production'){
-    require('longjohn');
-}
+// if (process.env.NODE_ENV !== 'production'){require('longjohn');}
 
 const express = require('express')
 const app = express()
@@ -30,13 +28,13 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 // const db = require('./db')
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-const movieRouter = require('./routes/movie-router')
+// const movieRouter = require('./routes/movie-router')
 
-//app.use(bodyParser.urlencoded({ extended: true }))
-//app.use(cors())
-//app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: true }))
+// app.use(cors())
+// app.use(bodyParser.json())
 
-app.use('/api', movieRouter)
+//app.use('/api', movieRouter)
 
 app.get('/', (req, res) => {
     //res.send('Hello World!')
