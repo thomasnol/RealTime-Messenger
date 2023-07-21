@@ -15,7 +15,7 @@
   "devDependencies": {},
   "scripts": {
     "install-server": "cd express-backend-app && npm install",
-    "start-server": "cd express-backend-app && node app.js",
+    "start-server": "cd express-backend-app && node index.js",
     "install-client": "cd react-frontend/vite-project && npm install",
     "build-client": "cd react-frontend/vite-project && npm run build",
     "start-client": "cd react-frontend/vite-project && npm run start"
