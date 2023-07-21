@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production'){
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
+// const bodyParser = require('body-parser')
 const cors = require('cors')
 require('dotenv').config()
 
@@ -45,4 +45,3 @@ app.get('/', (req, res) => {
 
 //const apiPort = 3000
 //app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
-x
