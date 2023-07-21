@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   // Fetching message from backend
   useEffect(() => {
-    fetch("http://127.0.0.1:4000")
+    fetch("https://mern-webapp-9f68.onrender.com")
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
   }, []);
