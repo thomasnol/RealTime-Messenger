@@ -1,11 +1,11 @@
 
-node_modules
-.pnp
+/node_modules
+/.pnp
 .pnp.js
 
-coverage
+/coverage
 
-build
+/build
 
 .env
 .DS_Store
@@ -21,3 +21,4 @@ yarn-error.log*
 node_modules/.package-lock.json
 express-backend-app/node_modules/
 react-frontend/node_modules/
+express-backend-app/.env
