@@ -20,6 +20,9 @@
     "build-client": "cd react-frontend/vite-project && npm run build",
     "start-client": "cd react-frontend/vite-project && npm run start"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
