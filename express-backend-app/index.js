@@ -25,21 +25,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 });
 
 
-// const db = require('./db')
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-
-// const movieRouter = require('./routes/movie-router')
-
-// app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(cors())
-// app.use(bodyParser.json())
-
-//app.use('/api', movieRouter)
-
 app.get('/', (req, res) => {
     //res.send('Hello World!')
     res.status(201).json({message: "Connected to Backend!"});
 })
-
-//const apiPort = 3000
-//app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
