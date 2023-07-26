@@ -1,4 +1,3 @@
-// if (process.env.NODE_ENV !== 'production'){require('longjohn');}
 
 const express = require('express')
 const app = express()
@@ -9,7 +8,8 @@ require('dotenv').config()
 
 // cors middleware
 const corsOptions = {
-    origin: "https://mern-frontend-jd6i.onrender.com" // frontend URI
+    //origin: "https://mern-frontend-jd6i.onrender.com" // frontend URI
+    origin: "http://localhost:3000" // frontend URI
 }
 app.use(express.json());
 app.use(cors(corsOptions));

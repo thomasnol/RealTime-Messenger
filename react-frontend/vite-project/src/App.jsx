@@ -1,8 +1,6 @@
 import React from 'react'
 
 import { useState, useEffect } from "react"
-import { NavBar } from "./components"
-
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -11,7 +9,8 @@ function App() {
 
   // Fetching message from backend
   useEffect(() => {
-    fetch("https://mern-webapp-9f68.onrender.com")
+    //fetch("https://mern-webapp-9f68.onrender.com")
+    fetch("http://localhost:8000")
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
   }, []);
