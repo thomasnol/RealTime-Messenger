@@ -1,10 +1,8 @@
 import React from 'react'
 
 import { useState, useEffect } from "react"
-import { BrowserRouter as Router } from "react-router-dom"
-import { Route, Routes } from "react-router-dom"
 import { NavBar } from "./components"
-import { MoviesList, MoviesInsert, MoviesUpdate } from "./pages"
+
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -21,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <h1>{message}</h1>
+      
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import Links from './Links'
-import NavBar from './NavBar'
+import ChatArea from './ChatArea'
 
-export { Links, NavBar }
+export { ChatArea }
