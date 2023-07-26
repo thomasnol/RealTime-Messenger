@@ -1,10 +1,17 @@
 
-const express = require('express')
+import express from 'express'
+import http from 'http'
+import { Server } from 'socket.io'
 const app = express()
-const mongoose = require('mongoose')
+
+const httpServer = http.createServer(app)
+const io = new Server(httpServer)
+
+import mongoose from 'mongoose'
 // const bodyParser = require('body-parser')
-const cors = require('cors')
-require('dotenv').config()
+import cors from 'cors'
+import dotenv from 'dotenv'
+dotenv.config()
 
 // cors middleware
 const corsOptions = {
@@ -16,9 +23,9 @@ app.use(cors(corsOptions));
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI).then(() => {
-    const PORT = process.env.PORT || 8000
-    app.listen(PORT, () => {
-        console.log(`App is Listening on PORT ${PORT}`);
+    const PORT = process.env.PORT || 9000
+    httpServer.listen(PORT, () => {
+        console.log(`App is listening on http://localhost:${PORT}`);
     })
 }).catch(err => {
     console.log(err);
@@ -27,5 +34,5 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 
 app.get('/', (req, res) => {
     //res.send('Hello World!')
-    res.status(201).json({message: "Connected to Backend!"});
+    res.status(201).json({message: "Testing"});
 })

@@ -17,8 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{message}</h1>
-      
+      <h2>React Frontend</h2>
     </div>
   )
 }
