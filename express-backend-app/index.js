@@ -6,6 +6,9 @@ const app = express()
 
 const httpServer = http.createServer(app)
 const io = new Server(httpServer)
+io.on('connection', (socket) => {
+    console.log('connection is ready');
+})
 
 import mongoose from 'mongoose'
 // const bodyParser = require('body-parser')
