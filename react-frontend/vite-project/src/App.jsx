@@ -3,6 +3,8 @@ import React from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 import { useState, useEffect } from "react"
 import { io } from "socket.io-client"
@@ -12,15 +14,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   const [socket, setSocket] = useState(null)
   const [message, setMessage] = useState("")
+  const [chat, setChat] = useState([])
 
   useEffect(() => {
     setSocket(io("http://localhost:4000"))
-  },[])
+  }, [])
+
+  useEffect(() => {
+    if (!socket) return
+    socket.on('message-broadcast', (data) => {
+      console.log("message recieved", data)
+      setChat((prev) => [...prev, data.message])
+    })
+  }, [socket])
 
   const handleForm = (e) => {
     e.preventDefault()
-    console.log(message)
-    socket.emit("send-message")
+    socket.emit("send-message", { message })
     setMessage("")
   }
 
@@ -35,6 +45,13 @@ function App() {
 
   return (
     <div>
+      <Container>
+        <Box sx={{ marginBottom: 8}}>
+          {chat.map((message) => (
+            <Typography key={message}>{message}</Typography>
+          ))}
+        </Box>
+      </Container>
       <Box component="form" onSubmit={handleForm}>
         <TextField
           label="Type your message here"

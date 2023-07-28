@@ -39,11 +39,14 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('connection is ready');
-    socket.on('send-message', () => {
-        console.log("message recieved")
-        // io.emit('message-broadcast', msg)
+    socket.on('send-message', (data) => {
+        socket.broadcast.emit('message-broadcast', data)
+    })
+    socket.on('disconnect', (socket) => {
+        console.log('User disconnected');
     })
 })
+
 
 /*
 // connect to MongoDB
