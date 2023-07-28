@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 8000",
+    "dev": "vite --port 3000",
     "build": "vite build",
-    "start": "vite start --port 8000",
+    "start": "vite start --port 3000",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
