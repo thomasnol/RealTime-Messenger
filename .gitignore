@@ -19,6 +19,6 @@ yarn-debug.log*
 yarn-error.log*
 
 node_modules/.package-lock.json
-express-backend-app/node_modules/
-react-frontend/node_modules/
+express-backend-app/node_modules
+react-frontend/vite-project/node_modules
 express-backend-app/.env
