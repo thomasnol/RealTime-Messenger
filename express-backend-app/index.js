@@ -6,9 +6,9 @@ const app = express()
 
 const httpServer = http.createServer(app)
 const io = new Server(httpServer)
-io.on('connection', (socket) => {
-    console.log('connection is ready');
-})
+
+import path from 'path'
+const __dirname = path.resolve()
 
 import mongoose from 'mongoose'
 // const bodyParser = require('body-parser')
@@ -34,8 +34,12 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log(err);
 });
 
-
 app.get('/', (req, res) => {
     //res.send('Hello World!')
-    res.status(201).json({message: "Testing"});
+    //res.status(201).json({message: "Testing"});
+    res.sendFile(__dirname + '/index.html');
+})
+
+io.on('connection', (socket) => {
+    console.log('connection is ready');
 })
