@@ -5,7 +5,11 @@ import { Server } from 'socket.io'
 const app = express()
 
 const httpServer = http.createServer(app)
-const io = new Server(httpServer)
+const io = new Server(httpServer, {
+    cors: {
+        origin: "http://localhost:3000"
+    }
+})
 
 import path from 'path'
 const __dirname = path.resolve()
