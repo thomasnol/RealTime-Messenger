@@ -16,6 +16,7 @@ function App() {
   const [message, setMessage] = useState("")
   const [chat, setChat] = useState([])
 
+  // setting up socket
   useEffect(() => {
     setSocket(io("http://localhost:4000"))
   }, [])
@@ -46,13 +47,13 @@ function App() {
   return (
     <div>
       <Container>
-        <Box sx={{ marginBottom: 8}}>
+        <Box sx={{ marginY: 2, marginLeft: 2}}>
           {chat.map((message) => (
             <Typography key={message}>{message}</Typography>
           ))}
         </Box>
       </Container>
-      <Box component="form" onSubmit={handleForm}>
+      <Box sx={{marginLeft: 5}} component="form" onSubmit={handleForm}>
         <TextField
           label="Type your message here"
           variant="standard"
