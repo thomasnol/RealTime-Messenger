@@ -1,4 +1,3 @@
-
 import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
@@ -42,12 +41,8 @@ io.on('connection', (socket) => {
     socket.on('send-message', (data) => {
         socket.broadcast.emit('message-broadcast', data)
     })
-    socket.on('start-typing', (data) => {
-        socket.broadcast.emit('start-typing-from-server')
-    })
-    socket.on('stop-typing', (data) => {
-        socket.broadcast.emit('stop-typing-from-server')
-    })
+    socket.on('start-typing', () => socket.broadcast.emit('start-typing-from-server'))
+    socket.on('stop-typing', () => socket.broadcast.emit('stop-typing-from-server'))
     socket.on('disconnect', (socket) => {
         console.log('User disconnected');
     })

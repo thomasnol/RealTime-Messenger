@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
-import InputLabel from '@mui/material/InputLabel';
 import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
 import Card from '@mui/material/Card';
@@ -28,12 +27,8 @@ export default function ChatWindow() {
         socket.on('message-broadcast', (data) => {
           setChat((prev) => [...prev, {message:data.message, received:true}])
         })
-        socket.on('start-typing-from-server', () => {
-          setTyping(true)
-        })
-        socket.on('stop-typing-from-server', () => {
-          setTyping(false)
-        })
+        socket.on('start-typing-from-server', () => setTyping(true))
+        socket.on('stop-typing-from-server', () => setTyping(false))
     }, [socket])
 
     const handleForm = (e) => {
@@ -54,7 +49,7 @@ export default function ChatWindow() {
         setTypingTimeout(
           setTimeout(() => {
           socket.emit("stop-typing")
-        }, 500))
+        }, 1200))
     }
 
     return (
