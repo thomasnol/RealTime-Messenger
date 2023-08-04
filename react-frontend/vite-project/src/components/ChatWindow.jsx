@@ -76,7 +76,6 @@ export default function ChatWindow() {
             placeholder="Message"
             value={message}
             onChange={ handleInput }
-            // helperText="Some important text"
             endAdornment={
               <InputAdornment position="end">
                 <IconButton type="submit">

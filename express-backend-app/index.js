@@ -46,6 +46,12 @@ io.on('connection', (socket) => {
     socket.on('disconnect', (socket) => {
         console.log('User disconnected');
     })
+
+    // utility loggers for socket.io rooms
+    socket.on("create-room", (room) => console.log(`room ${room} was created`))
+    socket.on("delete-room", (room) => console.log(`room ${room} was deleted`))
+    socket.on("join-room", (room, id) => console.log(`socket ${id} joined room ${room}`))
+    socket.on("leave-room", (room, id) => console.log(`socket ${id} left room ${room}`))
 })
 
 
