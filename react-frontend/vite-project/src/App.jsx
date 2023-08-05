@@ -1,9 +1,9 @@
 import React from 'react'
-
 import Container from '@mui/material/Container';
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ChatWindow from './components/ChatWindow';
+import { Outlet } from 'react-router-dom'
+import Header from './components/Header'
+
 
 function App() {
   // Fetching message from backend
@@ -18,7 +18,8 @@ function App() {
   return (
     <div>
       <Container>
-        <ChatWindow />
+        <Header />
+        <Outlet />
       </Container>
     </div>
   )
