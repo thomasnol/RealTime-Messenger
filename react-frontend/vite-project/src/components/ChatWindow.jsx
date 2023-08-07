@@ -53,39 +53,37 @@ export default function ChatWindow() {
     }
 
     return (
-    <Box sx={{ display:"flex", justifyContent:"center" }}>
-      <Card
-        sx={{
-          padding: 2,
-          marginTop: 10,
-          width: "60%",
-          backgroundColor:"grey",
-          color:"white"
-          }}>
-        <Box sx={{ marginY: 2, marginLeft: 2}}>
-          {chat.map((data) => (
-            <Typography sx={{ textAlign: data.received ? "left" : "right" }} key={data.message}>{data.message}</Typography>
-          ))}
-        </Box>
-        <Box sx={{marginLeft: 5}} component="form" onSubmit={handleForm}>
-          {typing &&
-          <Typography sx={{ textAlign: "left" }}>Typing...</Typography>}
-          <OutlinedInput
-            sx={{ backgroundColor:"white" }}
-            fullWidth
-            placeholder="Message"
-            value={message}
-            onChange={ handleInput }
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton type="submit">
-                  <SendIcon />
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </Box>
-      </Card>
-    </Box>
+    <Card
+      sx={{
+        padding: 2,
+        marginTop: 10,
+        width: "60%",
+        backgroundColor:"grey",
+        color:"white"
+        }}>
+      <Box sx={{ marginY: 2, marginLeft: 2}}>
+        {chat.map((data) => (
+          <Typography sx={{ textAlign: data.received ? "left" : "right" }} key={data.message}>{data.message}</Typography>
+        ))}
+      </Box>
+      <Box sx={{marginLeft: 5}} component="form" onSubmit={handleForm}>
+        {typing &&
+        <Typography sx={{ textAlign: "left" }}>Typing...</Typography>}
+        <OutlinedInput
+          sx={{ backgroundColor:"white" }}
+          fullWidth
+          placeholder="Message"
+          value={message}
+          onChange={ handleInput }
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton type="submit">
+                <SendIcon />
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </Box>
+    </Card>
   )
 }
