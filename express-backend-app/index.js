@@ -47,11 +47,18 @@ io.on('connection', (socket) => {
         console.log('User disconnected');
     })
 
+    // socket.io rooms
+    socket.on("join-room", ({roomId}) => {
+        socket.join(roomId)
+        console.log("joined room")
+        // socket.to(roomId).emit("user-connected", socket.id)
+    })
+
     // utility loggers for socket.io rooms
-    socket.on("create-room", (room) => console.log(`room ${room} was created`))
-    socket.on("delete-room", (room) => console.log(`room ${room} was deleted`))
-    socket.on("join-room", (room, id) => console.log(`socket ${id} joined room ${room}`))
-    socket.on("leave-room", (room, id) => console.log(`socket ${id} left room ${room}`))
+    // socket.on("create-room", (room) => console.log(`room ${room} was created`))
+    // socket.on("delete-room", (room) => console.log(`room ${room} was deleted`))
+    // socket.on("join-room", (room, id) => console.log(`socket ${id} joined room ${room}`))
+    // socket.on("leave-room", (room, id) => console.log(`socket ${id} left room ${room}`))
 })
 
 

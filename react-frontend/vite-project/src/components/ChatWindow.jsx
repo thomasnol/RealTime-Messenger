@@ -17,11 +17,6 @@ export default function ChatWindow() {
     const [chat, setChat] = useState([])
     const [typing, setTyping] = useState(false)
 
-    // setting up socket
-    useEffect(() => {
-        setSocket(io("http://localhost:4000"))
-    }, [])
-
     useEffect(() => {
         if (!socket) return
         socket.on('message-broadcast', (data) => {
