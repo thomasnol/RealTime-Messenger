@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
 import Card from '@mui/material/Card';
 
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom'
 import { useState, useEffect } from "react"
 
 export default function ChatWindow() {
@@ -29,7 +29,7 @@ export default function ChatWindow() {
 
   const handleForm = (e) => {
       e.preventDefault()
-      socket.emit("send-message", { message })
+      socket.emit("send-message", { message, roomId })
       setChat((prev) => [...prev, {message, received:false}])
       setMessage("")
   }
@@ -38,13 +38,13 @@ export default function ChatWindow() {
 
   function handleInput(e) {
       setMessage(e.target.value)
-      socket.emit("start-typing")
+      socket.emit("start-typing", { roomId })
 
       if (typingTimeout) clearTimeout(typingTimeout)
 
       setTypingTimeout(
         setTimeout(() => {
-        socket.emit("stop-typing")
+        socket.emit("stop-typing", { roomId })
       }, 1200))
   }
 
@@ -57,9 +57,7 @@ export default function ChatWindow() {
       backgroundColor:"grey",
       color:"white"
       }}>
-    {
-      roomId && <Typography>Room ID: {roomId}</Typography>
-    }
+    {roomId && <Typography>Room ID: {roomId}</Typography>}
     <Box sx={{ marginY: 2, marginLeft: 2}}>
       {chat.map((data) => (
         <Typography sx={{ textAlign: data.received ? "left" : "right" }} key={data.message}>{data.message}</Typography>
