@@ -1,6 +1,7 @@
 import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
+import sockets from './socket/sockets.js'
 const app = express()
 const PORT = 4000
 
@@ -31,13 +32,10 @@ app.use(cors(corsOptions));
 */
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html')
 })
 
-io.on('connection', (socket) => {
-  
-})
-
+io.on('connection', sockets)
 
 /*
 // connect to MongoDB
@@ -52,5 +50,5 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 */
 
 httpServer.listen(PORT, () => {
-  console.log(`Server listening on http://localhost:4000`);
+  console.log(`Server listening on http://localhost:4000`)
 })
