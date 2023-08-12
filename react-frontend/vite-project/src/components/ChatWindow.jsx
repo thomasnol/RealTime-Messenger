@@ -16,6 +16,7 @@ export default function ChatWindow() {
   const [message, setMessage] = useState("")
   const [chat, setChat] = useState([])
   const [typing, setTyping] = useState(false)
+  const { roomId } = useParams()
 
   useEffect(() => {
       if (!socket) return
@@ -56,6 +57,9 @@ export default function ChatWindow() {
       backgroundColor:"grey",
       color:"white"
       }}>
+    {
+      roomId && <Typography>Room ID: {roomId}</Typography>
+    }
     <Box sx={{ marginY: 2, marginLeft: 2}}>
       {chat.map((data) => (
         <Typography sx={{ textAlign: data.received ? "left" : "right" }} key={data.message}>{data.message}</Typography>
