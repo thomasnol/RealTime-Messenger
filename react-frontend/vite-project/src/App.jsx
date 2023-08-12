@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
-import { io } from "socket.io-client"
+import React, { useState, useEffect } from 'react'
 
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header'
-
+import { io } from "socket.io-client"
 
 function App() {
   /*
@@ -21,6 +20,8 @@ function App() {
   */
 
   // setting up socket
+  const [socket, setSocket] = useState(null)
+
   useEffect(() => {
     setSocket(io("http://localhost:4000"))
   }, [])
@@ -30,7 +31,7 @@ function App() {
       <Container>
         <Header />
         <Box sx={{ display:"flex", justifyContent:"center" }}>
-          <Outlet />
+          <Outlet context={{socket}} />
         </Box>
       </Container>
     </div>

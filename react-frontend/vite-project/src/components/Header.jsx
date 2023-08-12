@@ -9,13 +9,13 @@ export default function Header() {
   const roomId = uuidv4();
   return (
     <Card sx={{marginTop: 3, backgroundColor: "gray"}} raised>
-      <Link to="/">
+      <Link style={{ textDecoration: "none" }} to="/">
         <Button sx={{color: "white"}} variant="text">Home</Button>
       </Link>
-      <Link to="/chats">
+      <Link style={{ textDecoration: "none" }} to="/chats">
         <Button sx={{color: "white"}} variant="text">Chats</Button>
       </Link>
-      <Link to={`/room/${roomId}`}>
+      <Link style={{ textDecoration: "none" }} to={`/room/${roomId}`}>
         <Button sx={{color: "white"}} variant="text">Room</Button>
       </Link>
     </Card>
