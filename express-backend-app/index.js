@@ -2,6 +2,10 @@ import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
 import sockets from './socket/sockets.js'
+import mongoose from 'mongoose'
+import path from 'path'
+const __dirname = path.resolve()
+
 const app = express()
 const PORT = 4000
 
@@ -12,24 +16,6 @@ const io = new Server(httpServer, {
   }
 })
 
-import path from 'path'
-const __dirname = path.resolve()
-
-/*
-import mongoose from 'mongoose'
-// const bodyParser = require('body-parser')
-import cors from 'cors'
-import dotenv from 'dotenv'
-dotenv.config()
-
-// cors middleware
-const corsOptions = {
-  //origin: "https://mern-frontend-jd6i.onrender.com" // frontend URI
-  origin: "http://localhost:3000" // frontend URI
-}
-app.use(express.json());
-app.use(cors(corsOptions));
-*/
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
