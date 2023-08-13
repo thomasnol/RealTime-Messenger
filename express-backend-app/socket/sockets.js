@@ -21,9 +21,9 @@ const sockets = (socket) => {
   // socket.io rooms
   socket.on("join-room", ({ roomId }) => {
     socket.join(roomId)
-    socket.broadcast.emit("new-room")
-    console.log("joined room")
-    // socket.to(roomId).emit("user-connected", socket.id)
+  })
+  socket.on("create-new-room", ({ roomId }) => {
+    socket.broadcast.emit("create-new-room", { roomId })
   })
 }
 

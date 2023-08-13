@@ -5,6 +5,7 @@ import ChatWindow from '../components/ChatWindow.jsx'
 export default function Room() {
 	const { socket } = useOutletContext()
 	const params = useParams()
+  
 	useEffect(() => {
 		if (!socket) return
 		socket.emit('join-room', {roomId: params.roomId})
