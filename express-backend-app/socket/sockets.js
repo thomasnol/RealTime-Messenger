@@ -1,3 +1,5 @@
+import Room from '../models/Room.js'
+
 const sockets = (socket) => {
   socket.on('send-message', ({message, roomId}) => {
     let skt = socket.broadcast
@@ -23,6 +25,11 @@ const sockets = (socket) => {
     socket.join(roomId)
   })
   socket.on("create-new-room", ({ roomId }) => {
+    const room = new Room({
+      name: 'Test Room',
+      roomId: roomId,
+    })
+    room.save()
     socket.broadcast.emit("create-new-room", { roomId })
   })
 }
