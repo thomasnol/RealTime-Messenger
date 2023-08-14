@@ -2,8 +2,10 @@ import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
 import mongoose from 'mongoose'
+import path from 'path'
 import sockets from './socket/sockets.js'
 import router from './api/routes.js'
+import cors from 'cors'
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -19,8 +21,13 @@ const io = new Server(httpServer, {
   }
 })
 
-// uses /api/routes.js
-app.use("/", router)
+const __dirname = path.resolve()
+
+app.use(cors())
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
+app.use("/", router) // uses /api/routes.js
 
 // connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI).then(() => {
@@ -28,7 +35,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
       console.log(`App is listening on http://localhost:${PORT}`);
   })
 }).catch(err => {
-  console.log(err);
+  console.log(`Error: ${err}`);
 });
 
 
