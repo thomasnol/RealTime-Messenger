@@ -33,15 +33,12 @@ export default function Header({socket}) {
           </Link>
         </Box>
         {rooms.map((room) => (
-        <Link style={{ textDecoration: "none" }} to={`/room/${room}`} key={room}>
-          <Button sx={{color: "white"}} variant="text">
-            { room }
-          </Button>
-        </Link>
+          <Link style={{ textDecoration: "none" }} to={`/room/${room}`} key={room}>
+            <Button sx={{color: "white"}} variant="text">
+              { room }
+            </Button>
+          </Link>
         ))}
-        {/* <Link style={{ textDecoration: "none" }} to={`/room/${roomId}`}>
-          <Button sx={{color: "white"}} variant="text">Room</Button>
-        </Link> */}
         <Button sx={{color: "white"}} variant="text" onClick={createNewRoom}>
           New Room
         </Button>
