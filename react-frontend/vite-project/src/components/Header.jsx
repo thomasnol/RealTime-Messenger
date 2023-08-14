@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useOutletContext } from 'react-router-dom'
+import Cookies from 'js-cookies'
 
 import Card from '@mui/material/Card'
 import Button from '@mui/material/Button'
@@ -33,6 +34,12 @@ export default function Header({socket}) {
     })
   }, [socket])
 
+  function login() {
+    const userId = uuidv4()
+    Cookies.setItem("userId", userId)
+    navigate('/')
+  }
+
   return (
     <Card sx={{marginTop: 3, backgroundColor: "gray"}} raised>
       <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
@@ -48,9 +55,14 @@ export default function Header({socket}) {
             </Link>
           ))}
         </Box>
-        <Button sx={{color: "white"}} variant="text" onClick={createNewRoom}>
-          New Room
-        </Button>
+        <Box>
+          <Button sx={{color: "white"}} variant="text" onClick={login}>
+            Login
+          </Button>
+          <Button sx={{color: "white"}} variant="text" onClick={createNewRoom}>
+            New Room
+          </Button>
+        </Box>
       </Box>
     </Card>
   )

@@ -17,7 +17,7 @@ const sockets = (socket) => {
     skt.emit('stop-typing-from-server')
   })
   socket.on('disconnect', (socket) => {
-    console.log('User disconnected');
+    //
   })
 
   // socket.io rooms
