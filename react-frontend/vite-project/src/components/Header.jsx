@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import { v4 as uuidv4 } from 'uuid'
 
-export default function Header({socket}) {
+export default function Header({socket, userId, setUserId}) {
   const navigate = useNavigate()
   const [rooms, setRooms] = useState([])
   
@@ -36,7 +36,14 @@ export default function Header({socket}) {
 
   function login() {
     const userId = uuidv4()
+    setUserId(userId)
     Cookies.setItem("userId", userId)
+    navigate('/')
+  }
+
+  function logout() {
+    setUserId(null)
+    Cookies.removeItem("userId")
     navigate('/')
   }
 
@@ -56,12 +63,21 @@ export default function Header({socket}) {
           ))}
         </Box>
         <Box>
-          <Button sx={{color: "white"}} variant="text" onClick={login}>
-            Login
-          </Button>
-          <Button sx={{color: "white"}} variant="text" onClick={createNewRoom}>
-            New Room
-          </Button>
+          { userId &&
+            <>
+              <Button sx={{color: "white"}} variant="text" onClick={createNewRoom}>
+                New Room
+              </Button>
+              <Button sx={{color: "white"}} variant="text" onClick={logout}>
+                Logout
+              </Button>
+            </>
+          }
+          { !userId &&
+            <Button sx={{color: "white"}} variant="text" onClick={login}>
+              Login
+            </Button>
+          }
         </Box>
       </Box>
     </Card>
