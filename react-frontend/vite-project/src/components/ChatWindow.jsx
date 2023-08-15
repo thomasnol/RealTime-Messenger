@@ -2,6 +2,7 @@ import React from 'react'
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
@@ -48,6 +49,11 @@ export default function ChatWindow() {
       }, 1200))
   }
 
+  function deleteRoom() {
+    //
+    // socket.emit("delete-room", { roomId })
+  }
+
   return (
   <Card
     sx={{
@@ -57,7 +63,10 @@ export default function ChatWindow() {
       backgroundColor:"grey",
       color:"white"
       }}>
-    {roomId && <Typography>Room ID: {roomId}</Typography>}
+    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      {roomId && <Typography>Room ID: {roomId}</Typography>}
+      {roomId && <Button size='small' variant='text' color='inherit' onClick={deleteRoom}>Delete Room</Button>}
+    </Box>
     <Box sx={{ marginY: 2, marginLeft: 2}}>
       {chat.map((data) => (
         <Typography sx={{ textAlign: data.received ? "left" : "right" }} key={data.message}>{data.message}</Typography>

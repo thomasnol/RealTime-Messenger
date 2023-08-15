@@ -24,14 +24,20 @@ const sockets = (socket) => {
   socket.on("join-room", ({ roomId }) => {
     socket.join(roomId)
   })
-  socket.on("create-new-room", ({ roomId }) => {
+  socket.on("create-new-room", ({ roomId, userId }) => {
     const room = new Room({
       name: 'Test Room',
       roomId: roomId,
+      userId: userId,
     })
     room.save()
     socket.broadcast.emit("create-new-room", { roomId })
   })
+  // socket.on("delete-room", ({ roomId }) => {
+  //   // find room by roomId in database and delete room
+  //   roomId.remove()
+  //   socket.broadcast.emit("delete-room", { roomId })
+  // })
 }
 
 export default sockets
