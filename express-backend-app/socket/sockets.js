@@ -31,12 +31,12 @@ const sockets = (socket) => {
       userId: userId,
     })
     room.save()
-    socket.broadcast.emit("create-new-room", { roomId })
+    socket.emit("create-new-room", { room })
   })
-  socket.on("delete-room", ({ roomId }) => {
+  socket.on("delete-room", async ({ roomId }) => {
     // find room by roomId in database and delete room
-    roomId.remove()
-    socket.broadcast.emit("delete-room", { roomId })
+    await Room.deleteOne({ roomId: roomId })
+    socket.emit("delete-room", { roomId })
   })
 }
 

@@ -50,9 +50,6 @@ export default function ChatWindow() {
   }
 
   async function deleteRoom() {
-    await fetch(`http://localhost:4000/rooms/${roomId}`, {
-      method: "DELETE",
-    })
     socket.emit("delete-room", { roomId })
   }
 

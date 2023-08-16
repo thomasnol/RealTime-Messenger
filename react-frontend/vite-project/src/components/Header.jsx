@@ -14,15 +14,11 @@ export default function Header({socket, userId, setUserId}) {
   function createNewRoom() {
     const roomId = uuidv4()
     navigate(`/room/${roomId}`)
-    setRooms((prevRooms) => [...prevRooms, roomId])
     socket.emit('create-new-room', { roomId, userId })
+    // setRooms((prevRooms) => [...prevRooms, roomId])
+    // setRooms((prevRooms) => [...prevRooms, { name:'Test Room', roomId:roomId, userId:userId }])
+    setRooms((prevRooms) => [...prevRooms, { roomId, name:'Test', _id:'testId' }])
   }
-
-  // function deleteRoom({ roomId }) {
-  //   navigate('/')
-  //   setRooms((prevRooms) => prevRooms.filter((room) => room.roomId !== roomId))
-  //   socket.emit('delete-room', { roomId })
-  // }
 
   useEffect(() => {
     async function fetchRooms() {
@@ -35,12 +31,12 @@ export default function Header({socket, userId, setUserId}) {
 
   useEffect(() => {
     if (!socket) return
-    socket.on('create-new-room', ({ roomId }) => {
-      setRooms((prevRooms) => [...prevRooms, roomId])
+    socket.on('create-new-room', ({ room }) => {
+      setRooms((prevRooms) => [...prevRooms, room])
     })
-    // socket.on('delete-room', ({ roomId }) => {
-    //   setRooms((prevRooms) => prevRooms.filter((room) => room.roomId !== roomId))
-    // })
+    socket.on('delete-room', ({ roomId }) => {
+      setRooms(rooms.filter((room) => room.roomId !== roomId))
+    })
   }, [socket])
 
   function login() {
