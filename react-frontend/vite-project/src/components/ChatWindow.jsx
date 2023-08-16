@@ -20,38 +20,40 @@ export default function ChatWindow() {
   const { roomId } = useParams()
 
   useEffect(() => {
-      if (!socket) return
-      socket.on('message-broadcast', (data) => {
-        setChat((prev) => [...prev, {message:data.message, received:true}])
-      })
-      socket.on('start-typing-from-server', () => setTyping(true))
-      socket.on('stop-typing-from-server', () => setTyping(false))
+    if (!socket) return
+    socket.on('message-broadcast', (data) => {
+      setChat((prev) => [...prev, {message:data.message, received:true}])
+    })
+    socket.on('start-typing-from-server', () => setTyping(true))
+    socket.on('stop-typing-from-server', () => setTyping(false))
   }, [socket])
 
   const handleForm = (e) => {
-      e.preventDefault()
-      socket.emit("send-message", { message, roomId })
-      setChat((prev) => [...prev, {message, received:false}])
-      setMessage("")
+    e.preventDefault()
+    socket.emit("send-message", { message, roomId })
+    setChat((prev) => [...prev, {message, received:false}])
+    setMessage("")
   }
 
   const [typingTimeout, setTypingTimeout] = useState(null)
 
   function handleInput(e) {
-      setMessage(e.target.value)
-      socket.emit("start-typing", { roomId })
+    setMessage(e.target.value)
+    socket.emit("start-typing", { roomId })
 
-      if (typingTimeout) clearTimeout(typingTimeout)
+    if (typingTimeout) clearTimeout(typingTimeout)
 
-      setTypingTimeout(
-        setTimeout(() => {
-        socket.emit("stop-typing", { roomId })
-      }, 1200))
+    setTypingTimeout(
+      setTimeout(() => {
+      socket.emit("stop-typing", { roomId })
+    }, 1200))
   }
 
-  function deleteRoom() {
-    //
-    // socket.emit("delete-room", { roomId })
+  async function deleteRoom() {
+    await fetch(`http://localhost:4000/rooms/${roomId}`, {
+      method: "DELETE",
+    })
+    socket.emit("delete-room", { roomId })
   }
 
   return (

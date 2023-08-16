@@ -33,11 +33,11 @@ const sockets = (socket) => {
     room.save()
     socket.broadcast.emit("create-new-room", { roomId })
   })
-  // socket.on("delete-room", ({ roomId }) => {
-  //   // find room by roomId in database and delete room
-  //   roomId.remove()
-  //   socket.broadcast.emit("delete-room", { roomId })
-  // })
+  socket.on("delete-room", ({ roomId }) => {
+    // find room by roomId in database and delete room
+    roomId.remove()
+    socket.broadcast.emit("delete-room", { roomId })
+  })
 }
 
 export default sockets
