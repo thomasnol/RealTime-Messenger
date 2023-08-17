@@ -9,17 +9,6 @@ import { io } from "socket.io-client"
 import Cookies from 'js-cookies'
 
 function App() {
-  /*
-  Fetching message from backend
-  const [message, setMessage] = useState("")
-  useEffect(() => {
-    fetch("https://mern-webapp-9f68.onrender.com")
-    fetch("http://localhost:8000")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
-  */
-
   const [socket, setSocket] = useState(null)
   const [userId, setUserId] = useState(null)
 

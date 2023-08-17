@@ -16,9 +16,6 @@ const sockets = (socket) => {
     skt = roomId ? skt.to(roomId) : skt
     skt.emit('stop-typing-from-server')
   })
-  socket.on('disconnect', (socket) => {
-    //
-  })
 
   // socket.io rooms
   socket.on("join-room", ({ roomId }) => {
