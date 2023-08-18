@@ -30,6 +30,7 @@ export default function ChatWindow() {
 
   const handleForm = (e) => {
     e.preventDefault()
+    setTyping(false)
     socket.emit("send-message", { message, roomId })
     setChat((prev) => [...prev, {message, received:false}])
     setMessage("")
