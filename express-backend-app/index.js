@@ -17,7 +17,7 @@ const PORT = process.env.PORT // should be 4000
 const httpServer = http.createServer(app)
 const io = new Server(httpServer, {
   cors: {
-    origin: ["https://mern-frontend-jd6i.onrender.com"]
+    origin: ["https://realtime-messaging-app.onrender.com"]
   }
 })
 
