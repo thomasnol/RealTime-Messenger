@@ -22,7 +22,7 @@ export default function Header({socket, userId, setUserId}) {
 
   useEffect(() => {
     async function fetchRooms() {
-      const res = await fetch("http://localhost:4000/rooms")
+      const res = await fetch("https://mern-webapp-9f68.onrender.com/rooms")
       const { rooms } = await res.json()
       setRooms(rooms)
     }
