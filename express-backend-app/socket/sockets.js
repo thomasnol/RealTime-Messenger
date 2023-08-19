@@ -21,14 +21,14 @@ const sockets = (socket) => {
   socket.on("join-room", ({ roomId }) => {
     socket.join(roomId)
   })
-  socket.on("create-new-room", ({ roomId, userId }) => {
+  socket.on("create-new-room", ({ name, roomId, userId }) => {
     const room = new Room({
-      name: 'Test Room',
+      name: name,
       roomId: roomId,
       userId: userId,
     })
     room.save()
-    socket.emit("create-new-room", { room })
+    socket.broadcast.emit("create-new-room", { room })
   })
   socket.on("delete-room", async ({ roomId }) => {
     // find room by roomId in database and delete room

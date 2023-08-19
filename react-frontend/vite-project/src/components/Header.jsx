@@ -14,14 +14,14 @@ export default function Header({socket, userId, setUserId}) {
   function createNewRoom() {
     const roomId = uuidv4()
     navigate(`/room/${roomId}`)
-    socket.emit('create-new-room', { roomId, userId })
-    // setRooms((prevRooms) => [...prevRooms, { name:'Test Room', roomId:roomId, userId:userId }])
-    setRooms((prevRooms) => [...prevRooms, { roomId, name:'Test', _id:'testId' }])
+    socket.emit('create-new-room', { name:'Test Room', roomId, userId })
+    setRooms((prevRooms) => [...prevRooms, { name:'Room Test', roomId, userId }])
   }
 
   useEffect(() => {
     async function fetchRooms() {
-      const res = await fetch("https://mern-webapp-9f68.onrender.com/rooms")
+      const res = await fetch("http://localhost:4000/rooms")
+      // const res = await fetch("https://mern-webapp-9f68.onrender.com/rooms")
       const { rooms } = await res.json()
       setRooms(rooms)
     }

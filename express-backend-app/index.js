@@ -17,7 +17,8 @@ const PORT = process.env.PORT // should be 4000
 const httpServer = http.createServer(app)
 const io = new Server(httpServer, {
   cors: {
-    origin: ["https://realtime-messaging-app.onrender.com"]
+    origin: ["http://localhost:3000"]
+    // origin: ["https://realtime-messaging-app.onrender.com"]
   }
 })
 
@@ -32,8 +33,8 @@ app.use("/", router) // uses /api/routes.js
 // connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI).then(() => {
   httpServer.listen(PORT, () => {
-      // console.log(`App is listening on http://localhost:${PORT}`);
-      console.log(`App is listening on https://mern-webapp-9f68.onrender.com:${PORT}`);
+      console.log(`App is listening on http://localhost:${PORT}`);
+      // console.log(`App is listening on https://mern-webapp-9f68.onrender.com:${PORT}`);
   })
 }).catch(err => {
   console.log(`Error: ${err}`);
