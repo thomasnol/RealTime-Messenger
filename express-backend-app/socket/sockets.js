@@ -21,11 +21,10 @@ const sockets = (socket) => {
   socket.on("join-room", ({ roomId }) => {
     socket.join(roomId)
   })
-  socket.on("create-new-room", ({ name, roomId, userId }) => {
+  socket.on("create-new-room", ({ name, roomId }) => {
     const room = new Room({
       name: name,
       roomId: roomId,
-      userId: userId,
     })
     room.save()
     socket.broadcast.emit("create-new-room", { room })

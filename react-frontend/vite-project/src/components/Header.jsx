@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useOutletContext } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookies'
 
 import Card from '@mui/material/Card'
@@ -14,8 +14,8 @@ export default function Header({socket, userId, setUserId}) {
   function createNewRoom() {
     const roomId = uuidv4()
     navigate(`/room/${roomId}`)
-    socket.emit('create-new-room', { name:'Test Room', roomId, userId })
-    setRooms((prevRooms) => [...prevRooms, { name:'Test Room', roomId, userId }])
+    socket.emit('create-new-room', { name:'Test Room', roomId })
+    setRooms((prev) => [...prev, { name:'Room Test', roomId:roomId }])
   }
 
   useEffect(() => {
@@ -37,6 +37,7 @@ export default function Header({socket, userId, setUserId}) {
       setRooms(rooms.filter((room) => room.roomId !== roomId))
       if (window.location.pathname === `/room/${roomId}`) {
         navigate('/')
+        window.location.reload(true)
       }
     })
   }, [socket])
@@ -70,15 +71,13 @@ export default function Header({socket, userId, setUserId}) {
           ))}
         </Box>
         <Box>
+          <Button sx={{color: "white"}} variant="text" onClick={createNewRoom}>
+            New Room
+          </Button>
           { userId &&
-            <>
-              <Button sx={{color: "white"}} variant="text" onClick={createNewRoom}>
-                New Room
-              </Button>
-              <Button sx={{color: "white"}} variant="text" onClick={logout}>
-                Logout
-              </Button>
-            </>
+            <Button sx={{color: "white"}} variant="text" onClick={logout}>
+              Logout
+            </Button>
           }
           { !userId &&
             <Button sx={{color: "white"}} variant="text" onClick={login}>
