@@ -15,7 +15,6 @@ export default function Header({socket, userId, setUserId}) {
     const roomId = uuidv4()
     navigate(`/room/${roomId}`)
     socket.emit('create-new-room', { roomId, userId })
-    // setRooms((prevRooms) => [...prevRooms, roomId])
     // setRooms((prevRooms) => [...prevRooms, { name:'Test Room', roomId:roomId, userId:userId }])
     setRooms((prevRooms) => [...prevRooms, { roomId, name:'Test', _id:'testId' }])
   }
@@ -83,6 +82,9 @@ export default function Header({socket, userId, setUserId}) {
               Login
             </Button>
           }
+          <Link style={{ textDecoration: "none" }} to="/about">
+            <Button sx={{color: "white"}} variant="text">About</Button>
+          </Link>
         </Box>
       </Box>
     </Card>
