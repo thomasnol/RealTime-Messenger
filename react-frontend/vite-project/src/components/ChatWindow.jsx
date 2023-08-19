@@ -59,7 +59,7 @@ export default function ChatWindow() {
     sx={{
       padding: 2,
       marginTop: 10,
-      width: "60%",
+      width: "70%",
       backgroundColor:"grey",
       color:"white"
       }}>
@@ -73,8 +73,7 @@ export default function ChatWindow() {
       ))}
     </Box>
     <Box sx={{marginLeft: 5}} component="form" onSubmit={handleForm}>
-      {typing &&
-      <Typography sx={{ textAlign: "left" }}>Typing...</Typography>}
+      {typing && <Typography sx={{ textAlign: "left" }}>Typing...</Typography>}
       <OutlinedInput
         sx={{ backgroundColor:"white" }}
         fullWidth

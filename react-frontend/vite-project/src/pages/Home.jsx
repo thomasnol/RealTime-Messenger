@@ -3,6 +3,6 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <Typography>Real Time Chat App</Typography>
+    <Typography><br/>Real Time Chat App</Typography>
   )
 }
