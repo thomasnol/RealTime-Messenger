@@ -52,6 +52,7 @@ export default function ChatWindow() {
 
   async function deleteRoom() {
     socket.emit("delete-room", { roomId })
+    navigate('/')
   }
 
   return (

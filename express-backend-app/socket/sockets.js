@@ -23,15 +23,14 @@ const sockets = (socket) => {
   })
   socket.on("create-new-room", ({ name, roomId }) => {
     const room = new Room({
-      name: name,
-      roomId: roomId,
+      name,
+      roomId,
     })
     room.save()
     socket.broadcast.emit("create-new-room", { room })
   })
   socket.on("delete-room", async ({ roomId }) => {
-    // find room by roomId in database and delete room
-    await Room.deleteOne({ roomId: roomId })
+    await Room.deleteOne({ roomId })
     socket.emit("delete-room", { roomId })
   })
 }

@@ -34,11 +34,12 @@ export default function Header({socket, userId, setUserId}) {
       setRooms((prevRooms) => [...prevRooms, room])
     })
     socket.on('delete-room', ({ roomId }) => {
+      // console.log('room being deleted', roomId)
       setRooms(rooms.filter((room) => room.roomId !== roomId))
-      if (window.location.pathname === `/room/${roomId}`) {
-        navigate('/')
-        window.location.reload(true)
-      }
+      // if (window.location.pathname === `/room/${roomId}`) {
+      //   navigate('/')
+      //   window.location.reload(true)
+      // }
     })
   }, [socket])
 
