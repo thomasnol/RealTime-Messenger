@@ -13,8 +13,8 @@ function App() {
   const [userId, setUserId] = useState(null)
 
   useEffect(() => {
-    setSocket(io("http://localhost:4000"))
-    // setSocket(io("https://mern-webapp-9f68.onrender.com"))
+    // setSocket(io("http://localhost:4000"))
+    setSocket(io("https://mern-webapp-9f68.onrender.com"))
     const _userId = Cookies.getItem("userId")
     if (_userId) setUserId(_userId)
   }, [])
