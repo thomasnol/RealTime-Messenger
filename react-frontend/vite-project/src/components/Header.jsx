@@ -15,7 +15,7 @@ export default function Header({socket, userId, setUserId}) {
     const roomId = uuidv4()
     navigate(`/room/${roomId}`)
     socket.emit('create-new-room', { name:'Test Room', roomId, userId })
-    setRooms((prevRooms) => [...prevRooms, { name:'Room Test', roomId, userId }])
+    setRooms((prevRooms) => [...prevRooms, { name:'Test Room', roomId, userId }])
   }
 
   useEffect(() => {
@@ -35,6 +35,9 @@ export default function Header({socket, userId, setUserId}) {
     })
     socket.on('delete-room', ({ roomId }) => {
       setRooms(rooms.filter((room) => room.roomId !== roomId))
+      if (window.location.pathname === `/room/${roomId}`) {
+        navigate('/')
+      }
     })
   }, [socket])
 
