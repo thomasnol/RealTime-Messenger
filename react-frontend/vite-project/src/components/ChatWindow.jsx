@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
 import Card from '@mui/material/Card';
 
-import { useOutletContext, useParams } from 'react-router-dom'
+import { useOutletContext, useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
 
 export default function ChatWindow() {
@@ -18,6 +18,7 @@ export default function ChatWindow() {
   const [chat, setChat] = useState([])
   const [typing, setTyping] = useState(false)
   const { roomId } = useParams()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!socket) return
@@ -52,7 +53,6 @@ export default function ChatWindow() {
 
   async function deleteRoom() {
     socket.emit("delete-room", { roomId })
-    navigate('/')
   }
 
   return (

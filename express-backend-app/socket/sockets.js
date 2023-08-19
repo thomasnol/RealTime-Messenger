@@ -30,8 +30,10 @@ const sockets = (socket) => {
     socket.broadcast.emit("create-new-room", { room })
   })
   socket.on("delete-room", async ({ roomId }) => {
+    // console.log("deleting-room", roomId)
     await Room.deleteOne({ roomId })
     socket.emit("delete-room", { roomId })
+    socket.broadcast.emit("delete-room", { roomId })
   })
 }
 
