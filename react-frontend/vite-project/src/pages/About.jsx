@@ -9,8 +9,10 @@ export default function About() {
       It also uses Socket.io for real time communication between users.
       Messages are not persistant, so refreshing the page will clear the chat history.
       Currently the login button is a dummy login system, though it still creates a userId.
+      The box at the top right is for custom names of rooms, defaulting to "New Room" if left empty.
       <br/>
       Source Code: <a href="https://github.com/starlord678/RealTime-Messenger">Github</a>
+      Portfolio: <a href="https://nolasque.com">nolasque.com</a>
     </Typography>
   )
 }
