@@ -12,6 +12,7 @@ export default function About() {
       The box at the top right is for custom names of rooms, defaulting to "New Room" if left empty.
       <br/>
       Source Code: <a href="https://github.com/starlord678/RealTime-Messenger">Github</a>
+      <br/>
       Portfolio: <a href="https://nolasque.com">nolasque.com</a>
     </Typography>
   )
