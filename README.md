@@ -4,4 +4,6 @@ Messages are not persistant, so refreshing the page will clear the chat history.
 Currently the login button is a dummy login system, though it still creates a userId.
 PS: The box at the top right is for custom names of rooms, defaulting to "New Room" if left empty.
 
-ChatApp demonstration: https://realtime-messaging-app.onrender.com
+ChatApp deployment: https://realtime-messaging-app.onrender.com
+
+Video demonstration: https://github.com/starlord678/RealTime-Messenger/assets/114269812/f6037b6c-0d64-4961-a5b9-3babde11f962
