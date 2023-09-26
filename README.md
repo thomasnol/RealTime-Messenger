@@ -6,4 +6,4 @@ PS: The box at the top right is for custom names of rooms, defaulting to "New Ro
 
 ChatApp deployment: https://realtime-messaging-app.onrender.com
 
-Video demonstration: https://github.com/starlord678/RealTime-Messenger/assets/114269812/f6037b6c-0d64-4961-a5b9-3babde11f962
+Video demonstration: https://github-production-user-asset-6210df.s3.amazonaws.com/114269812/270503286-f6037b6c-0d64-4961-a5b9-3babde11f962.mp4
